@@ -8,8 +8,7 @@ const port = 3000;
 
 app.use(express.json());
 app.use(cors());
-const cors = require('cors');
-app.use(cors());
+
 
 
 mongoose.connect('mongodb://localhost:27017/starktechmg', { useNewUrlParser: true, useUnifiedTopology: true });
