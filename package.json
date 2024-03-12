@@ -1,0 +1,22 @@
+{
+  "name": "starktechmg",
+  "version": "1.0.0",
+  "description": "A STARK TECH MG é uma empresa especializada em serviços de informática, oferecendo soluções tecnológicas inovadoras para atender às necessidades variadas dos nossos clientes. Com uma equipe dedicada de profissionais autônomos, estamos comprometidos em proporcionar serviços de alta qualidade no conforto do seu lar ou escritório.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.3",
+    "firebase": "^10.8.1",
+    "mongoose": "^8.2.1",
+    "react-icons": "^5.0.1"
+  },
+  "devDependencies": {
+    "webpack": "^5.90.3",
+    "webpack-cli": "^5.1.4"
+  }
+}
