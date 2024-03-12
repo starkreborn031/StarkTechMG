@@ -1,53 +1,15 @@
-// frontend/src/App.js
-import React, { useState, useEffect } from 'react';
-import AgendamentoForm from './components/AgendamentoForm';
-import ListaAgendamentos from './components/ListaAgendamentos';
-import './App.css';  // Adicione esta linha para importar o arquivo de estilo
-// frontend/src/App.js
-
-function App() {
-  const [agendamentos, setAgendamentos] = useState([]);
-
-  const atualizarAgendamentos = async () => {
-    try {
-      // Buscar agendamentos do backend
-      const response = await fetch('http://localhost:5000/api/agendamentos');
-      const data = await response.json();
-      setAgendamentos(data);
-    } catch (error) {
-      console.error('Erro ao buscar agendamentos do backend:', error);
-    }
-  };
-
-  useEffect(() => {
-    // Atualizar a lista de agendamentos ao iniciar o aplicativo
-    atualizarAgendamentos();
-  }, []);
-
-  return (
-    <div>
-      <header>
-        <h1>STARK TECH MG - Soluções em Informática</h1>
-      </header>
-      <main>
-        {/* Passar a função de atualização para os componentes */}
-        <AgendamentoForm atualizarAgendamentos={atualizarAgendamentos} />
-        <ListaAgendamentos agendamentos={agendamentos} atualizarAgendamentos={atualizarAgendamentos} />
-      </main>
-      <footer>
-        <p>&copy; 2024 STARK TECH MG</p>
-      </footer>
-    </div>
-  );
-}
-
-export default App;
-
 // backend/app.js
 const express = require('express');
 const mongoose = require('mongoose');
+const cors = require('cors');
+
 const app = express();
 const port = 3000;
+
+app.use(express.json());
+app.use(cors());
+
+mongoose.connect('mongodb://localhost:27017/starktechmg', { useNewUrlParser: true, useUnifiedTopology: true });
 
 const agendamentoSchema = new mongoose.Schema({
   nomeCliente: String,
@@ -56,8 +18,6 @@ const agendamentoSchema = new mongoose.Schema({
 });
 
 const Agendamento = mongoose.model('Agendamento', agendamentoSchema);
-
-mongoose.connect('mongodb://localhost:27017/starktechmg', { useNewUrlParser: true, useUnifiedTopology: true });
 
 app.get('/api/agendamentos', async (req, res) => {
   try {
