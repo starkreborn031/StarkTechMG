@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <title>TikTok Spinner</title>
+    <style>
+        #spinner-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        .spinner {
+            width: 20px;
+            height: 20px;
+            margin: 0 10px;
+            border-radius: 50%;
+            background-color: #ff0000; /* Cor da bola (substitua pela cor desejada) */
+            animation: spin 1s linear infinite;
+        }
+
+        .spinner:nth-child(2) {
+            animation-delay: 0.5s;
+        }
+
+        @keyframes spin {
+            0% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div id="spinner-container">
+    <div class="spinner"></div>
+    <div class="spinner"></div>
+</div>
+
+</body>
+</html>
